@@ -54,14 +54,10 @@ function closeMessage(id) {
 }
 
 // Profile
-const profileItems = ref([
-  {
-    label: 'Account',
-    command: () => {
-      console.log("Account")
-    }
-  },
-])
+const accountPopover = ref();
+const toggleAccount = (event) => {
+  accountPopover.value.toggle(event);
+}
 
 </script>
 
@@ -107,14 +103,16 @@ const profileItems = ref([
       </Popover>
     </div>
     <div class="card flex justify-center">
-      <SplitButton :model="profileItems" text>
-       <template #default>
-         <img src="@/assets/images/user-example.png" alt="Account">
-       </template>
-        <template #dropdownicon>
-          <IconChevron class="text-surface-950" width="9" height="9" />
-        </template>
-      </SplitButton>
+      <Button variant="link" @click="toggleAccount" class="!gap-5">
+        <img alt="Account" src="@/assets/images/user-example.png">
+        <IconChevron class="text-surface-950" height="9" width="9"/>
+      </Button>
+      <Popover ref="accountPopover" class="notifications min-w-xs max-w-xl">
+        <Button asChild v-slot="slotProps"  severity="secondary" outlined >
+          <RouterLink :to="{name: 'settings'}" :class="slotProps.class"  class="!block" @click="toggleAccount"> Account</RouterLink>
+        </Button>
+      </Popover>
+
     </div>
 
 

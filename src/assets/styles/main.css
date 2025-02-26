@@ -11,6 +11,15 @@
     --radius-xl: 30px;
     --radius-2xl: 50px;
     --default-font-family: Manrope, sans-serif;
+    --color-orange-200: #ffddd7;
+    --color-orange-600: #F6866A;
+    --color-orange-800: #FB896B;
+    --color-yellow-200: #FFF0E6;
+    --color-yellow-600: #FABE7A;
+    --color-yellow-800: #FABE7A;
+    --color-blue-200: #E5F7FF;
+    --color-blue-600: #59E6F6;
+    --color-blue-800: #26bfd0;
 }
 
 .notifications .p-message-text {
