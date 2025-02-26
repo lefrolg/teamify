@@ -1,0 +1,136 @@
+<script setup>
+import {nextTick, ref, watch} from "vue";
+import IconSearch from "./icons/IconSearch.vue";
+import IconBell from "./icons/IconBell.vue";
+import IconChevron from "./icons/IconChevron.vue";
+
+// Search
+const searchPopover = ref();
+const searchElement = ref();
+const search = ref();
+const toggleSearch = async (event) => {
+  searchPopover.value.toggle(event);
+  await nextTick()
+  if (searchPopover.value.visible) {
+    searchElement.value?.$el.focus()
+  }
+}
+watch(search, () => {
+  console.log('Searching for', search.value)
+})
+
+// Notifications
+const notificationPopover = ref();
+const notifications = ref([
+  {
+    id: 1,
+    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
+  },
+  {
+    id: 2,
+    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
+  },
+  {
+    id: 3,
+    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
+  },
+  {
+    id: 4,
+    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
+  }
+])
+const toggleNotification = (event) => {
+  if (!notifications.value.length) return;
+  notificationPopover.value.toggle(event);
+}
+
+function closeMessage(id) {
+  const index = notifications.value.findIndex(n => n.id === id);
+  if (index < 0) return;
+  notifications.value.splice(index, 1)
+  if (!notifications.value.length) {
+    notificationPopover.value.hide()
+  }
+}
+
+// Profile
+const profileItems = ref([
+  {
+    label: 'Account',
+    command: () => {
+      console.log("Account")
+    }
+  },
+])
+
+</script>
+
+<template>
+
+  <header class="flex flex-row flex-nowrap w-full gap-5">
+    <div class="welcome">
+      <div class="text-[26px] text-surface-800 font-bold mb-1">Good Morning Anima</div>
+      <div class="text-sm text-surface-600">Hope you have a good day</div>
+    </div>
+    <div class="ml-auto"></div>
+    <div class="card flex justify-center">
+      <Button type="button" variant="link" @click="toggleSearch">
+        <IconSearch class="text-surface-950"/>
+      </Button>
+
+      <Popover ref="searchPopover">
+        <InputText ref="searchElement" v-model="search" class="w-[25rem]" placeholder="Search"/>
+      </Popover>
+    </div>
+    <div class="card flex justify-center">
+      <Button variant="link" @click="toggleNotification">
+        <OverlayBadge :value="notifications.length ? notifications.length : null" class="inline-flex" severity="danger"
+                      size="small">
+          <IconBell class="text-surface-950"/>
+        </OverlayBadge>
+      </Button>
+
+      <Popover ref="notificationPopover" class="notifications max-w-lg">
+        <div class="notifications flex flex-col gap-2">
+          <TransitionGroup name="list">
+            <Message
+                v-for="notification in notifications"
+                :key="notification.id"
+                closable
+                severity="secondary"
+                @close="closeMessage(notification.id)"
+            >
+              {{ notification.message }}
+            </Message>
+          </TransitionGroup>
+        </div>
+      </Popover>
+    </div>
+    <div class="card flex justify-center">
+      <SplitButton :model="profileItems" text>
+       <template #default>
+         <img src="@/assets/images/user-example.png" alt="Account">
+       </template>
+        <template #dropdownicon>
+          <IconChevron class="text-surface-950" width="9" height="9" />
+        </template>
+      </SplitButton>
+    </div>
+
+
+  </header>
+</template>
+
+<style scoped>
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+}
+
+</style>

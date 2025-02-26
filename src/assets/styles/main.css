@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
+@custom-variant dark (&:where(.p-dark, .p-dark *));
+
+
+:root {
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-xl: 30px;
+    --radius-2xl: 50px;
+    --default-font-family: Manrope, sans-serif;
+}
+
+.notifications .p-message-text {
+    @apply line-clamp-2
+}
+
+.p-badge:empty {
+    display: none
+}
