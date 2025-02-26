@@ -1,22 +1,15 @@
-#  PrimeVue + TailwindCSS v4 Example
+#  Teamify dashboard
 
 ## Overview
 
-This example demonstrates how to integrate PrimeVue with TailwindCSS v4, showcasing a modern and responsive dashboard interface. The project features a dark/light theme toggle, responsive layout, and various PrimeVue components styled with TailwindCSS.
+Sample of dashboard
 
-## Features
-
-- Dark/Light theme support
-- Fully responsive design
-- PrimeVue components with TailwindCSS styling
-- Chart.js integration
-- Powered by Vite for fast development
-- Real-time search functionality
-- Customizable UI components
 
 ## Tech Stack
 
 - [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework
+- [Pinia](https://pinia.vuejs.org/) - The store library for Vue for State Management
+- [Vue Router](https://router.vuejs.org/) - The official Router for Vue.js
 - [PrimeVue](https://primevue.org/) - The Ultimate Vue UI Component Library
 - [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
@@ -27,8 +20,7 @@ This example demonstrates how to integrate PrimeVue with TailwindCSS v4, showcas
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/primefaces/primevue-examples.git
-cd primevue-examples/vite-tailwindv4
+git clone https://github.com/lefrolg/teamify.git
 ```
 
 2. Install dependencies:
@@ -55,15 +47,12 @@ npm run build
 vite-tailwindv4/
 ├── src/
 │   ├── components/         # Vue components
-│   ├── composables/        # Vue composables
 │   ├── assets/            # Static assets
+│   ├── router/            # App router
+│   ├── views/             # App pages
+│   ├── utils/             # Helpers
 │   └── App.vue            # Root component
 ├── public/                # Public static assets
 ├── index.html            # Entry HTML file
 └── vite.config.js        # Vite configuration
 ```
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/primefaces/primevue-examples/issues).
-
