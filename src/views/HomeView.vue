@@ -3,6 +3,7 @@
 import MetricsOverviewCard from "../components/dashboard/MetricsOverviewCard.vue";
 import {ref} from "vue";
 import TeamsStrengthChart from "../components/dashboard/TeamsStrengthChart.vue";
+import EmployeesActivityChart from "../components/dashboard/EmployeesActivityChart.vue";
 
 const performanceMetrics = ref([
   {
@@ -37,7 +38,9 @@ const performanceMetrics = ref([
       <div class="row-span-3 p-6 rounded-md border border-surface-100">
         <TeamsStrengthChart/>
       </div>
-      <div class="row-span-3 p-6 rounded-md border border-surface-100"></div>
+      <div class="row-span-3 p-6 rounded-md border border-surface-100">
+        <EmployeesActivityChart/>
+      </div>
       <MetricsOverviewCard
           v-for="metric of performanceMetrics"
           :key="metric.id"
