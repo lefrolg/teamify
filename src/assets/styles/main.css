@@ -6,6 +6,7 @@
 
 
 :root {
+    --radius-xs: 8px;
     --radius-md: 10px;
     --radius-lg: 12px;
     --radius-xl: 30px;
@@ -16,7 +17,7 @@
     --color-orange-800: #FB896B;
     --color-yellow-200: #FFF0E6;
     --color-yellow-600: #FABE7A;
-    --color-yellow-800: #FABE7A;
+    --color-yellow-800: #f3ac57;
     --color-blue-200: #E5F7FF;
     --color-blue-600: #59E6F6;
     --color-blue-800: #26bfd0;
