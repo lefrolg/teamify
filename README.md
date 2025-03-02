@@ -2,10 +2,22 @@
 
 ## Overview
 
-Sample of dashboard
+
+[Live site](https://lefrolg.github.io/teamify/)
 
 Design:
 ![Design](src/assets/images/design.jpg)
+
+Implemented Features:
+
+- Figma design translation: partially converted the Figma design into a website using PrimeVue and Tailwind CSS, closely matching the original design.
+- Dynamic routing: implemented a routing system to navigate between various dashboard views.
+- Interactive search input: developed a search input that activates when clicking the search icon, complete with autofocus for an enhanced user experience.
+- Notification system: built a notifications counter and popover with the ability to remove notifications, all managed through a Pinia store.
+- Team Strength Chart: created and styled a bar chart using Chart.js with a legend and additional labels with values.
+- Preloader: : implemented a skeleton loader for the Team Strength Chart to ensure a smoother user experience during data loading.
+- Employee Activity Chart: implemented an Employee Activity chart with a creative, custom solution.
+
 
 ## Tech Stack
 
