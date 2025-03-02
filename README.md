@@ -4,6 +4,8 @@
 
 Sample of dashboard
 
+Design:
+![Design](src/assets/images/design.jpg)
 
 ## Tech Stack
 
