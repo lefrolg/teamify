@@ -49,10 +49,6 @@ const performanceMetrics = ref([
           :subtitle="metric.subtitle"
           :title="metric.title"
           class="row-span-1 p-3 rounded-md"/>
-      <Card class="col-span-2 p-6"></Card>
-      <div class="row-span-1"></div>
-
-
     </div>
   </div>
 </template>

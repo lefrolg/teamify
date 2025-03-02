@@ -63,8 +63,6 @@ const TeamifyPreset = definePreset(Aura, {
     }
 });
 
-console.log(TeamifyPreset)
-
 app.use(PrimeVue, {
     theme: {
         preset: TeamifyPreset,

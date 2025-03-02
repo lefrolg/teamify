@@ -1,8 +1,10 @@
 <script setup>
-import {nextTick, ref, watch} from "vue";
+import {nextTick, onMounted, ref, watch} from "vue";
 import IconSearch from "./icons/IconSearch.vue";
 import IconBell from "./icons/IconBell.vue";
 import IconChevron from "./icons/IconChevron.vue";
+import {useNotificationsStore} from "../stores/notifications.js";
+import {storeToRefs} from "pinia";
 
 // Search
 const searchPopover = ref();
@@ -20,35 +22,23 @@ watch(search, () => {
 })
 
 // Notifications
+const notificationsStore = useNotificationsStore();
+const {notifications} = storeToRefs(notificationsStore)
+
+onMounted(() => {
+  notificationsStore.setNotifications();
+})
+
+
 const notificationPopover = ref();
-const notifications = ref([
-  {
-    id: 1,
-    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
-  },
-  {
-    id: 2,
-    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
-  },
-  {
-    id: 3,
-    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
-  },
-  {
-    id: 4,
-    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi laboriosam non officiis repellendus sit tempora voluptatem."
-  }
-])
 const toggleNotification = (event) => {
   if (!notifications.value.length) return;
   notificationPopover.value.toggle(event);
 }
 
 function closeMessage(id) {
-  const index = notifications.value.findIndex(n => n.id === id);
-  if (index < 0) return;
-  notifications.value.splice(index, 1)
-  if (!notifications.value.length) {
+  const notificationsLength = notificationsStore.removeNotification(id)
+  if (!notificationsLength) {
     notificationPopover.value.hide()
   }
 }
@@ -124,11 +114,13 @@ const toggleAccount = (event) => {
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s ease;
+  max-height: 1000px;
 }
 
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
+  max-height: 0;
 }
 
 </style>
